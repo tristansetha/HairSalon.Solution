@@ -8,14 +8,14 @@ namespace HairSalon.Models
         private string _stylistName;
         private int _id;
         private string _stylistDetails;
-        private List<Stylist> _stylists;
+        private List<Client> _clients;
 
         public Stylist(string stylistName, string stylistDetails, int id = 0)
         {
             _stylistName = stylistName;
             _stylistDetails = stylistDetails;
             _id = id;
-            _stylists = new List<Stylist> {};
+            _clients = new List<Client> {};
         }
 
         public static void ClearAll()
@@ -55,6 +55,11 @@ namespace HairSalon.Models
         public int GetId()
         {
             return _id;
+        }
+
+        public void AddClient(Client client)
+        {
+            _clients.Add(client);
         }
 
         public static List<Stylist> GetAll()
