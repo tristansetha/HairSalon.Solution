@@ -79,5 +79,14 @@ namespace HairSalon.TestTools
             List<Client> result = newStylist.GetClients();
             CollectionAssert.AreEqual(newClientList, result);
         }
+
+        [TestMethod]
+        public void Find_ReturnsCorrectStylist_Stylist()
+        {
+            Stylist newStylist = new Stylist("Amy", "Amy likes pears");
+            newStylist.Save();
+            Stylist foundStylist = Stylist.Find(newStylist.GetId());
+            Assert.AreEqual(newStylist, foundStylist);
+        }
     }
 }
