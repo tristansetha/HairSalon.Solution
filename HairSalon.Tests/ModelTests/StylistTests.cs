@@ -24,5 +24,14 @@ namespace HairSalon.TestTools
             Stylist newStylist = new Stylist("name", "details", 1);
             Assert.AreEqual(typeof(Stylist), newStylist.GetType());
         }   
+
+        [TestMethod]
+        public void GetAll_GetAllStylistsEmptyList_List()
+        {
+            int result = Stylist.GetAll().Count;
+            Assert.AreEqual(0, result);
+        }
+
+
     }
 }
