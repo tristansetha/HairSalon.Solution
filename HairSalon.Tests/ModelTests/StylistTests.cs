@@ -64,7 +64,7 @@ namespace HairSalon.TestTools
         [TestMethod]
         public void GetName_ReturnName_String()
         {
-            Stylist newStylist = new Stylist("Amy", "Amy likes apples");
+            Stylist newStylist = new Stylist("Amy", "Amy likes pears");
             newStylist.Save();
             string result = newStylist.GetName();
             Assert.AreEqual("Amy", result);
