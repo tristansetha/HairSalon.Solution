@@ -31,7 +31,5 @@ namespace HairSalon.TestTools
             int result = Stylist.GetAll().Count;
             Assert.AreEqual(0, result);
         }
-
-
     }
 }

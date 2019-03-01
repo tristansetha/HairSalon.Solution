@@ -5,12 +5,20 @@ using HairSalon.Models;
 
 namespace HairSalon.Controllers
 {
-    public class StylistsController : Controller
+    public class StylistController : Controller
     {
-        [HttpGet("/stylist")]
+        [HttpGet("/stylists")]
         public ActionResult Index()
         {
             return View();
         }
+
+        [HttpGet("/stylists/new")]
+        public ActionResult New()
+        {
+            return View();
+        }
+
+
     }
 }
