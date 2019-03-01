@@ -60,5 +60,14 @@ namespace HairSalon.TestTools
             Stylist secondStylist = new Stylist("John", "John likes apples");
             Assert.AreEqual(firstStylist, secondStylist);
         }
+
+        [TestMethod]
+        public void GetName_ReturnName_String()
+        {
+            Stylist newStylist = new Stylist("Amy", "Amy likes apples");
+            newStylist.Save();
+            string result = newStylist.GetName();
+            Assert.AreEqual("Amy", result);
+        }
     }
 }
