@@ -10,7 +10,8 @@ namespace HairSalon.Controllers
         [HttpGet("/stylists")]
         public ActionResult Index()
         {
-            return View();
+            List<Stylist> allStylists = Stylist.GetAll();
+            return View(allStylists);
         }
 
         [HttpGet("/stylists/new")]
@@ -19,6 +20,12 @@ namespace HairSalon.Controllers
             return View();
         }
 
-
+        [HttpPost("/stylists")]
+        public ActionResult Create(string stylistName, string stylistDetails)
+        {
+            Stylist newStylist = new Stylist(stylistName, stylistDetails, 1);
+            List<Stylist> allStylists = Stylist.GetAll();
+            return View("Index", allStylists);
+        }
     }
 }
