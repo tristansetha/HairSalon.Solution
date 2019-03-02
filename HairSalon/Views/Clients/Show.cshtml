@@ -1,0 +1,9 @@
+<h1>Client Details: </h1>
+
+<h2>@Model["clients"].GetName()</h2>
+<h3>Stylist: @Model["stylists"].GetName()</h3>
+
+<a href='/stylists/@Model["stylists"].GetId()/clients/new'>Add another client</a>
+<a href='/stylists'>View all categories</a>
+
+<a href='/stylists/@Model["stylists"].GetId()/clients/@Model["clients"].GetId()/edit'>Edit this Item</a>

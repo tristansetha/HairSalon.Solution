@@ -57,6 +57,11 @@ namespace HairSalon.Models
             return _id;
         }
 
+        public string GetDetails()
+        {
+            return _stylistDetails;
+        }
+
         public void AddClient(Client client)
         {
             _clients.Add(client);

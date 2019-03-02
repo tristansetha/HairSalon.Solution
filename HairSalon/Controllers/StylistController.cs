@@ -5,7 +5,7 @@ using HairSalon.Models;
 
 namespace HairSalon.Controllers
 {
-    public class StylistController : Controller
+    public class StylistsController : Controller
     {
         [HttpGet("/stylists")]
         public ActionResult Index()
@@ -23,7 +23,8 @@ namespace HairSalon.Controllers
         [HttpPost("/stylists")]
         public ActionResult Create(string stylistName, string stylistDetails)
         {
-            Stylist newStylist = new Stylist(stylistName, stylistDetails, 1);
+            Stylist newStylist = new Stylist(stylistName, stylistDetails);
+            newStylist.Save();
             List<Stylist> allStylists = Stylist.GetAll();
             return View("Index", allStylists);
         }
@@ -34,10 +35,16 @@ namespace HairSalon.Controllers
             Dictionary<string, object> model = new Dictionary<string, object>();
             Stylist selectedStylist = Stylist.Find(id);
             List<Client> stylistClients = selectedStylist.GetClients();
-            model.Add("stylist", selectedStylist);
+            model.Add("stylists", selectedStylist);
             model.Add("clients", stylistClients);
             return View(model);
         }
+
+        // [HttpPost("/stylists/{id}/delete")]
+        // public ActionResult Delete(int id)
+        // {
+
+        // }
 
         //Create new clients within a given stylist
         [HttpPost("/stylists/{stylistId}/clients")]
