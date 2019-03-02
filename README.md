@@ -31,8 +31,9 @@ By Tristan Setha 03/01/19
 
 <br/>To run tests:
 <br/>Run tests:
-Mode    <br/>
-<br/>use the command $ dotnet test
+    <br/>Navigate into HairSalon.Tests
+<br/>use the command $ dotnet restore
+<br/>then $ dotnet test
 
 
 ## Specs
