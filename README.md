@@ -1,6 +1,6 @@
 # Hair Salon
 
-By Tristan Setha 02/15/18, update 03/01/19
+By Tristan Setha 03/01/19
 
 ## Description
 
