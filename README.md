@@ -1,5 +1,4 @@
-# Track suggester
-
+# Hair Salon
 
 By Tristan Setha 02/15/18, update 03/01/19
 
