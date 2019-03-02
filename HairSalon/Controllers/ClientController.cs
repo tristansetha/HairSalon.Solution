@@ -7,6 +7,11 @@ namespace HairSalon.Controllers
 {
     public class ClientController : Controller
     {
-        
+        // [HttpGet("/stylists/{stylistId}/clients/new")]
+        // public ActionResult New(int stylistId)
+        // {
+        //     Stylist stylist = stylist.Find(stylistId);
+        //     return View(stylist);
+        // }
     }
 }
