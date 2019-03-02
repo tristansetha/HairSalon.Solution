@@ -48,7 +48,7 @@ Mode    <br/>
 
 ## Technologies Used
 
-C#, .NetCore 1.1, Mamp, MyPhpAdmin, MySql, HTML, Git, Visual Studio code, Mono
+C#, .NetCore 1.1, Mamp, MyPhpAdmin, MySql, HTML, Git, Visual Studio code
 
 ask me anything!!! tristansetha@gmail.com
 
