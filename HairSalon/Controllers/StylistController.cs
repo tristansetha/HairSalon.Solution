@@ -40,11 +40,16 @@ namespace HairSalon.Controllers
             return View(model);
         }
 
-        // [HttpPost("/stylists/{id}/delete")]
-        // public ActionResult Delete(int id)
-        // {
+        [HttpPost("/stylists/{stylistId}/delete")]
+        public ActionResult Delete(int stylistId)
+        {
+            
+            Stylist stylist = Stylist.Find(stylistId);
+            // stylist.DeleteAllClients(stylistId);
+            stylist.Delete(stylistId);
 
-        // }
+            return RedirectToAction("Index");
+        } //test
 
         //Create new clients within a given stylist
         [HttpPost("/stylists/{stylistId}/clients")]
