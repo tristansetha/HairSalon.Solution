@@ -30,7 +30,10 @@ By Tristan Setha 03/01/19
 <br/>Open the path from "Now listening on: http://localhost:5000 in your favorite web browser
 
 <br/>To run tests:
-<br/>Run tests:
+<br/>Open mamp and Start Servers
+<br/>Click on Open WebStart page
+<br/>Click on 'tools' at the top menu bar then click on PHPMYADMIN
+<br/>Click on databases, click on import, then select and import tristan_setha_test.zip
     <br/>Navigate into HairSalon.Tests
 <br/>use the command $ dotnet restore
 <br/>then $ dotnet test
