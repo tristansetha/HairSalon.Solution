@@ -169,7 +169,7 @@ namespace HairSalon.Models
             stylist_id.Value = stylist.GetId();
             cmd.Parameters.Add(stylist_id);
             MySqlParameter specialty_id = new MySqlParameter();
-            specialty_id.ParameterName = "@ClientId";
+            specialty_id.ParameterName = "@SpecialtyId";
             specialty_id.Value = this._id;
             cmd.Parameters.Add(specialty_id);
             cmd.ExecuteNonQuery();
