@@ -21,14 +21,21 @@ namespace HairSalon.TestTools
         {
             DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=tristan_setha_test;";
         }
-
-
         [TestMethod]
         public void SpecialtyConstructor_CreatesInstanceOfSpecialty_Specialty()
         {
             Specialty newSpecialty = new Specialty("description");
             Assert.AreEqual(typeof(Specialty), newSpecialty.GetType());
-        }   
+        } 
+
+        [TestMethod]
+        public void GetDescription_ReturnDescription_String()
+        {
+            Specialty newSpecialty = new Specialty("a description");
+            newSpecialty.Save();
+            string result = newSpecialty.GetDescription();
+            Assert.AreEqual("a description", result);
+        }  
 
         [TestMethod]
         public void GetAll_GetAllSpecialtiesEmptyList_List()
@@ -62,6 +69,13 @@ namespace HairSalon.TestTools
             CollectionAssert.AreEqual(test, result);
         }
 
-        
+        [TestMethod]
+        public void Find_ReturnsCorrectSpecialty_Specialty()
+        {
+            Specialty newSpecialty = new Specialty("description");
+            newSpecialty.Save();
+            Specialty foundSpecialty = Specialty.Find(newSpecialty.GetId());
+            Assert.AreEqual(newSpecialty, foundSpecialty);
+        }
     }
 }
