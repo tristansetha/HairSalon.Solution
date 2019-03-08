@@ -35,35 +35,49 @@ namespace HairSalon.Controllers
             Dictionary<string, object> model = new Dictionary<string, object>();
             Stylist selectedStylist = Stylist.Find(id);
             List<Client> stylistClients = selectedStylist.GetClients();
-            model.Add("stylists", selectedStylist);
-            model.Add("clients", stylistClients);
+            model.Add("stylist", selectedStylist);
+            model.Add("client", stylistClients);
             return View(model);
+        }
+
+        //Create new clients within a given stylist
+        [HttpPost("/stylists/{stylistId}/clients")]
+        public ActionResult Create(int clientPhoneNumber, string clientName, string clientNotes, int stylistId)
+        {
+            Dictionary<string, object> model = new Dictionary<string, object>();
+            Stylist foundStylist = Stylist.Find(stylistId);
+            Client newClient = new Client(clientName, clientPhoneNumber, clientNotes);
+            newClient.Save();
+            foundStylist.AddClient(newClient);
+            List<Client> stylistClients = foundStylist.GetClients();
+            model.Add("client", stylistClients);
+            model.Add("stylist", foundStylist);
+            return View("Show", model);
+        }
+
+        // [HttpPost("/categories/{categoryId}/items/{itemId}/delete")]
+        // public ActionResult DeleteItem(int itemId)
+        // {
+        //     Item item = Item.Find(itemId);
+        //     item.DeleteItem(itemId);
+        //     List<Item> allItems = Item.GetAll();
+        //     return RedirectToAction("Show", allItems);
+        // }
+
+        [HttpPost("/stylists/delete")]
+        public ActionResult ClearAll()
+        {
+            Stylist.ClearAll();
+            return RedirectToAction("Index");
         }
 
         [HttpPost("/stylists/{stylistId}/delete")]
         public ActionResult Delete(int stylistId)
         {
-            
             Stylist stylist = Stylist.Find(stylistId);
             // stylist.DeleteAllClients(stylistId);
             stylist.Delete(stylistId);
-
             return RedirectToAction("Index");
         } //test
-
-        //Create new clients within a given stylist
-        [HttpPost("/stylists/{stylistId}/clients")]
-        public ActionResult Create(int stylistId, string clientName)
-        {
-            Dictionary<string, object> model = new Dictionary<string, object>();
-            Stylist foundStylist = Stylist.Find(stylistId);
-            Client newClient = new Client(clientName, stylistId);
-            newClient.Save();
-            foundStylist.AddClient(newClient);
-            List<Client> stylistClients = foundStylist.GetClients();
-            model.Add("clients", stylistClients);
-            model.Add("stylists", foundStylist);
-            return View("Show", model);
-        }
     }
 }

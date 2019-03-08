@@ -7,6 +7,13 @@ namespace HairSalon.Controllers
 {
     public class ClientsController : Controller
     {
+        [HttpGet("/clients")] //test
+        public ActionResult Index()
+        {
+            List<Client> allClients = Client.GetAll();
+            return View(allClients);
+        }
+
         [HttpGet("/stylists/{stylistId}/clients/new")]
         public ActionResult New(int stylistId)
         {
@@ -23,18 +30,6 @@ namespace HairSalon.Controllers
             model.Add("clients", client);
             model.Add("stylists", stylist);
             return View(model);
-        }
-
-        [HttpPost("/stylists/{stylistId}/clients/{clientId}")]
-        public ActionResult Update(int stylistId, int clientId, string newName)
-        {
-            Client client = Client.Find(clientId);
-            client.Edit(newName);
-            Dictionary<string, object> model = new Dictionary<string, object>();
-            Stylist stylist = Stylist.Find(stylistId);
-            model.Add("stylists", stylist);
-            model.Add("clients", client);
-            return View("Show", model);
         }
 
         [HttpPost("/clients/delete")]

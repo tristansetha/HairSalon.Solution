@@ -10,7 +10,9 @@ namespace HairSalon.TestTools
     {
         public void Dispose()
         {
+            Stylist.ClearAll();
             Client.ClearAll();
+            Client.ClearJoinTable();
         }
 
         public ClientTest()
@@ -21,14 +23,14 @@ namespace HairSalon.TestTools
         [TestMethod]
         public void ClientConstructor_CreatesInstanceOfClient_Client()
         {
-            Client newClient = new Client("name", 1);
+            Client newClient = new Client("name", 0, "notes");
             Assert.AreEqual(typeof(Client), newClient.GetType());
         }   
 
         [TestMethod]
         public void GetName_ReturnsName_String()
         {
-            Client newClient = new Client("Bob", 1);
+            Client newClient = new Client("Bob",  0, "notes");
             newClient.Save();
             string result = newClient.GetName();
             Assert.AreEqual("Bob", result);
@@ -37,34 +39,34 @@ namespace HairSalon.TestTools
         [TestMethod]
         public void SetName_SetNameAndReturnsCorrectName_String()
         {
-            Client newClient = new Client("Bob", 1);
+            Client newClient = new Client("Bob",  0, "notes");
             newClient.Save();
             newClient.SetName("Tim");
             string result = newClient.GetName();
             Assert.AreEqual("Tim", result);
         }
 
-        [TestMethod]
-        public void GetStylistId_ReturnsCorrectStylistId_Int()
-        {
-            Client newClient = new Client("Bob", 0);
-            newClient.Save();
-            int Id = newClient.GetStylistId();
-            Assert.AreEqual(0, Id);
-        }
+        // [TestMethod]
+        // public void GetStylistId_ReturnsCorrectStylistId_Int()
+        // {
+        //     Client newClient = new Client("Bob",  0, "notes");
+        //     newClient.Save();
+        //     int Id = newClient.GetStylistId();
+        //     Assert.AreEqual(0, Id);
+        // }
 
         [TestMethod]
         public void Equals_ReturnsTrueIfNamesAreTheSame_Client()
         {
-            Client firstClient = new Client("John", 1);
-            Client secondClient = new Client("John", 1);
+            Client firstClient = new Client("John", 0, "notes");
+            Client secondClient = new Client("John", 0, "notes");
             Assert.AreEqual(firstClient, secondClient);
         }
 
         [TestMethod]
         public void GetAll_GetAllClientsEmptyList_List()
         {
-            Client newClient = new Client("John", 1);
+            Client newClient = new Client("John", 0, "notes");
             newClient.Save();
             int result = Client.GetAll().Count;
             Assert.AreEqual(1, result);
@@ -73,7 +75,7 @@ namespace HairSalon.TestTools
         [TestMethod]
         public void Save_DatabaseAssignsIdToClient_Id()
         {
-            Client newClient = new Client("John", 1);
+            Client newClient = new Client("John", 0, "notes");
             newClient.Save();
             Client savedClient = Client.GetAll()[0];
             int result = savedClient.GetId();
@@ -84,7 +86,7 @@ namespace HairSalon.TestTools
         [TestMethod]
         public void Find_ReturnsCorrectClient_Client()
         {
-            Client newClient = new Client("Amy", 1);
+            Client newClient = new Client("Amy", 0, "notes");
             newClient.Save();
             Client foundClient = Client.Find(newClient.GetId());
             Assert.AreEqual(newClient, foundClient);
@@ -93,11 +95,24 @@ namespace HairSalon.TestTools
         [TestMethod]
         public void Edit_ReturnCorrectEdit_String()
         {
-        Client testClient = new Client("Walk the Dog", 1);
-        testClient.Save();
-        testClient.Edit("Mow the lawn");
-        string result = Client.Find(testClient.GetId()).GetName();
-        Assert.AreEqual("Mow the lawn", result);
+            Client testClient = new Client("Walk the Dog", 0, "notes");
+            testClient.Save();
+            testClient.Edit("newName", 0000000000, "newNotes");
+            string result = Client.Find(testClient.GetId()).GetName();
+            Assert.AreEqual("newName", result);
+        }
+
+        [TestMethod]
+        public void GetStylists_ReturnCorrectList_List()
+        {
+            Stylist newStylist = new Stylist("name", "details");
+            newStylist.Save();
+            Client newClient = new Client("name", 0, "notes");
+            newClient.Save();
+            newStylist.AddClient(newClient);
+            List<Stylist> test = new List<Stylist> {newStylist};
+            List<Stylist> results = newClient.GetStylists();
+            CollectionAssert.AreEqual(test, results);
         }
     }
 }

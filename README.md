@@ -9,8 +9,14 @@ By Tristan Setha 03/01/19
 <br/>Cloning:
 <br/>Download .NET Core 1.1.4 SDK and .NET Core Runtime 1.1.2 and install them. Download Mono and install it.
 <br/>Open terminal and $ cd into preferred destination of clone
-<br/>Run the command $ git clone https://github.com/tristansetha/HairSalon.Solution
-<br/>$ cd into HairSalon.Solution
+<br/>Run the command:
+```
+$ git clone https://github.com/tristansetha/HairSalon.Solution
+```
+<br/>Navigate into the HairSalon directory
+```
+$ cd HairSalon.Solution
+```
 <br/>To edit: open in preffered text editor
 
 <br/>Running:
@@ -20,9 +26,11 @@ By Tristan Setha 03/01/19
 <br/>Click on Open WebStart page
 <br/>Click on 'tools' at the top menu bar then click on PHPMYADMIN
 <br/>Click on databases, click on import, then select and import tristan_setha.zip
-
 <br/>In command prompt or terminal
-<br/>Navigate into HairSalon.Solution directory: $ cd HairSalonSolution
+<br/>Navigate into HairSalon.Solution directory: 
+```
+$ cd HairSalon.Solution
+```
 <br/>Navigate into HairSalon directory: $ cd HairSalon
 <br/>while in the HairSalon directory use the commands:
 <br/>$ dotnet restore
@@ -34,9 +42,15 @@ By Tristan Setha 03/01/19
 <br/>Click on Open WebStart page
 <br/>Click on 'tools' at the top menu bar then click on PHPMYADMIN
 <br/>Click on databases, click on import, then select and import tristan_setha_test.zip
-    <br/>Navigate into HairSalon.Tests
-<br/>use the command $ dotnet restore
-<br/>then $ dotnet test
+<br/>Navigate into HairSalon.Tests
+<br/>use the command:
+```
+$ dotnet restore
+```
+<br/>then run the command:
+```
+$ dotnet test
+```
 
 
 ## Specs

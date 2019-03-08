@@ -12,6 +12,7 @@ namespace HairSalon.TestTools
         {
             Stylist.ClearAll();
             Client.ClearAll();
+            Stylist.ClearJoinTable();
         }
 
         public StylistTest()
