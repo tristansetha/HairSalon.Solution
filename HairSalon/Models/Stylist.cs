@@ -147,7 +147,7 @@ namespace HairSalon.Models
         //     }
         // }//test
 
-        public void Delete(int id)
+        public void Delete()
         {
             MySqlConnection conn = DB.Connection();
             conn.Open();
@@ -155,7 +155,7 @@ namespace HairSalon.Models
             cmd.CommandText = @"DELETE FROM stylists WHERE id = @stylistId;";
             MySqlParameter stylistId = new MySqlParameter();
             stylistId.ParameterName = "@stylistId";
-            stylistId.Value = id;
+            stylistId.Value = this._id;
             cmd.Parameters.Add(stylistId);
             cmd.ExecuteNonQuery();
             conn.Close();
@@ -227,7 +227,6 @@ namespace HairSalon.Models
                 conn.Dispose();
             }
             return newStylist;
-
         }
 
         public static void ClearJoinTable()

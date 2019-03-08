@@ -76,7 +76,7 @@ namespace HairSalon.Controllers
         {
             Stylist stylist = Stylist.Find(stylistId);
             // stylist.DeleteAllClients(stylistId);
-            stylist.Delete(stylistId);
+            stylist.Delete();
             return RedirectToAction("Index");
         } //test
     }

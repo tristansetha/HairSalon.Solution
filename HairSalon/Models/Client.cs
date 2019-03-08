@@ -174,7 +174,7 @@ namespace HairSalon.Models
             var cmd = conn.CreateCommand() as MySqlCommand;
             cmd.CommandText = @"DELETE FROM clients WHERE id = @searchId;";
             MySqlParameter searchId = new MySqlParameter();
-            searchId.ParameterName = "searchId";
+            searchId.ParameterName = "@searchId";
             searchId.Value = id;
             cmd.Parameters.Add(searchId);
             cmd.ExecuteNonQuery();
