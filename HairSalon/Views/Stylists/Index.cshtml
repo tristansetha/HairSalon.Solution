@@ -1,18 +1,20 @@
 <h1>Stylists</h1>
-
-@if (@Model.Count == 0)
-{
-    <h3>No stylists have been added yet!</h3>
-}
-
+<h2>Stylists:</h2>
 @foreach (var stylist in Model)
 {
-    <h3><a href='/stylists/@stylist.GetId()'>@stylist.GetName()</a></h3>
+    <p><a href='/stylists/@stylist.GetId()'>Name: @stylist.GetName() (add client or specialty)</a></p>
 }
+
+
+@if (@Model.Count != 0)
+{
+    <h3><a href="/clients/new">Add a new client</a></h3>
+}
+
+<h3><a href="/stylists/new">Add a new stylist</a></h3>
 
 <form action='/stylists/delete' method="post">
     <button id='deleteAll' name='deleteAll'type="submit">Clear all stylists</button>
 </form>
 
 <p><a href='/'>Back home</a></p>
-<h3><a href="/stylists/new">Add a new stylist</a></h3>

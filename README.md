@@ -6,7 +6,7 @@ By Tristan Setha 03/01/19
 
 ## Setup/Installation Requirements
 
-<br/>Cloning:
+<br/>To Clone:
 <br/>Download .NET Core 1.1.4 SDK and .NET Core Runtime 1.1.2 and install them. Download Mono and install it.
 <br/>Open terminal and $ cd into preferred destination of clone
 <br/>Run the command:
@@ -17,9 +17,9 @@ $ git clone https://github.com/tristansetha/HairSalon.Solution
 ```
 $ cd HairSalon.Solution
 ```
-<br/>To edit: open in preffered text editor
+<br/>To edit: open entire dot solutions director in preffered text editor
 
-<br/>Running:
+<br/>To Run:
 <br/>Download tristan_setha zip file
 <br/>Download and install MAMP: //Link top mamp website download
 <br/>Open mamp and Start Servers
@@ -31,10 +31,15 @@ $ cd HairSalon.Solution
 ```
 $ cd HairSalon.Solution
 ```
-<br/>Navigate into HairSalon directory: $ cd HairSalon
+<br/>Navigate into HairSalon directory: 
+```
+$ cd HairSalon
+```
 <br/>while in the HairSalon directory use the commands:
-<br/>$ dotnet restore
-<br/>$ dotnet run
+```
+$ dotnet restore
+$ dotnet run
+```
 <br/>Open the path from "Now listening on: http://localhost:5000 in your favorite web browser
 
 <br/>To run tests:

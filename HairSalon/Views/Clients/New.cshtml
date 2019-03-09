@@ -1,9 +1,17 @@
 <h1>Add a new client</h1>
+<p>Add a client here:</p>
+
 
 <form action='/clients' method='post'>
 <label for="name">client name: </label>
-    <input id='name' name='name' type='text'>
-    <!-- <label for='clientName'>client name: </label>
-    <input id='clientName' name='clientName' type='text'> -->
-    <button type='submit'>Add client</button>
+    <br/><input id='name' name='name' type='text'required>
+    <br/><label for='phoneNumber'>client phone number: </label>
+    <br/><input id='phoneNumber' name='phoneNumber' type='number'required>
+    <br/><label for='notes'>Notes about client: </label>
+    <br/><input id='notes' name='notes' type='text'required>
+    <br/><button type='submit'>submit</button>
 </form>
+
+<p><a href="/">Back home</a></p>
+<p><a href="/clients">Back to clients.</a></p>
+<p><a href="/stylists">Back to stylists.</a></p>

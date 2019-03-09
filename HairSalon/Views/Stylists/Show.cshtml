@@ -6,28 +6,53 @@
 
 @if (@Model["stylistClients"].Count != 0)
 {
-    <h4>Here are all the clients in this stylist: </h4>
+    <h4>Stylist clients </h4>
     <ul>
         @foreach (var client in @Model["stylistClients"])
         {
-            <li>@client.GetName()</li>
+            <li>@client.GetName()</li> 
+        }
+    </ul>
+}
+
+@if (@Model["stylistSpecialties"].Count != 0)
+{
+    <h4>Stylist specialties: </h4>
+    <ul>
+        @foreach (var specialty in @Model["stylistSpecialties"])
+        {
+            <li>@specialty.GetDescription()</li>
         }
     </ul>
 }
 
 <h4>Add a client to this stylist:</h4>
-
 <form action='/stylists/@Model["stylist"].GetId()/clients/new' method='post'>
 <label for='clientId'>Select a client</label>
-
 <select id='clientId' name='clientId' type='text'>
     @foreach (var client in @Model["allClients"])
     {
         <option value='@client.GetId()'>@client.GetName()</option> //dropdown
     }
 </select>
-
-<button type='submit'>Add</button>
+<br/><button type='submit'>Add</button>
 </form>
 
-<p><a href="/">Return to Main Page</a></p>
+<h4>Add a specialty to this stylist:</h4>
+<form action='/stylists/@Model["stylist"].GetId()/specialties/new' method='post'>
+<label for='specialtyId'>Select a specialty</label>
+<select id='specialtyId' name='specialtyId' type='text'>
+    @foreach (var specialty in @Model["allSpecialties"])
+    {
+        <option value='@specialty.GetId()'>@specialty.GetDescription()</option> //dropdown
+    }
+</select>
+<br/><button type='submit'>Add</button>
+</form>
+
+
+
+<h3><a href="/clients/new">Add a new client</a></h3>
+<h3><a href='/specialties/new'>Add a specialty</a></h3>
+
+<br/><p><a href="/">Return to Main Page</a></p>

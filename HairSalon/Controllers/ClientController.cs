@@ -49,11 +49,22 @@ namespace HairSalon.Controllers
         return View(category);
         }
 
+        [HttpPost("/clients/{clientId}/stylists/new")]
+        public ActionResult AddStylist(int clientId, int stylistId)
+        {
+            Client client = Client.Find(clientId);
+            Stylist stylist = Stylist.Find(stylistId);
+            client.AddStylist(stylist);
+            return RedirectToAction("Show", new { id = clientId });
+        }
+
+
         [HttpPost("/clients/delete")]
         public ActionResult DeleteAll()
         {
             Client.ClearAll();
-            return View();
+            List<Client> allClients = Client.GetAll();
+            return View("Index", allClients);
         }
 
         [HttpGet("/stylists/{stylistId}/clients/{clientId}/edit")]
@@ -67,14 +78,6 @@ namespace HairSalon.Controllers
             return View(model);
         }
 
-        [HttpPost("/clients/{clientId}/stylists/new")]
-        public ActionResult AddStylist(int clientId, int stylistId)
-        {
-        Client client = Client.Find(clientId);
-        Stylist stylist = Stylist.Find(stylistId);
-        client.AddStylist(stylist);
-        return RedirectToAction("Show", new { id = clientId });
-        }
 
         // [HttpPost("/stylists/{stylistId}/clients/{clientId}/delete")]
         // public ActionResult Delete(int stylistId, int clientId)

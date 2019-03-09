@@ -13,6 +13,8 @@ namespace HairSalon.TestTools
             Stylist.ClearAll();
             Client.ClearAll();
             Stylist.ClearJoinTable();
+            Specialty.ClearAll();
+            Specialty.ClearJoinTable();
         }
 
         public StylistTest()
@@ -90,6 +92,33 @@ namespace HairSalon.TestTools
             Stylist foundStylist = Stylist.Find(newStylist.GetId());
             Assert.AreEqual(newStylist, foundStylist);
         }
+
+        [TestMethod]
+        public void AddSpecialty_AssociatesSpecialtyWithStylist_SpecialtyList()
+        {
+            Stylist newStylist = new Stylist("name", "details");
+            newStylist.Save();
+            Specialty newSpecialty = new Specialty("description");
+            newSpecialty.Save();
+            newStylist.AddSpecialty(newSpecialty);
+            List<Specialty> test = new List<Specialty> {newSpecialty};
+            List<Specialty> result = newStylist.GetSpecialties();
+            CollectionAssert.AreEqual(test, result);
+        }
+
+        [TestMethod]
+        public void GetSpecialties_GetListOfSpecialtiesFromStylist_Specialty()
+        {
+            Stylist newStylist = new Stylist("name", "details");
+            newStylist.Save();
+            Specialty newSpecialty = new Specialty("description");
+            newSpecialty.Save();
+            newStylist.AddSpecialty(newSpecialty);
+            List<Specialty> result = new List<Specialty> {newSpecialty};
+            List<Specialty> test = newStylist.GetSpecialties();
+            CollectionAssert.AreEqual(test, result);
+        }
+        
 
         // [TestMethod]
         // public void AddClient_AssociatesClientWithStylist_ClientList()
