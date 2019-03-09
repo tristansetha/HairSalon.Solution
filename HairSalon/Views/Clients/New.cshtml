@@ -1,8 +1,9 @@
-<h1>Add a new client to @Model.GetName()</h1>
+<h1>Add a new client</h1>
 
-<form action='/stylists/@Model.GetId()/clients' method='post'>
-    <input id='stylistId' name='categoryId' type='hidden' value='@Model.GetId()'>
-    <label for='clientName'>client name: </label>
-    <input id='clientName' name='clientName' type='text'>
-    <button type='submit'>Add item</button>
+<form action='/clients' method='post'>
+<label for="name">client name: </label>
+    <input id='name' name='name' type='text'>
+    <!-- <label for='clientName'>client name: </label>
+    <input id='clientName' name='clientName' type='text'> -->
+    <button type='submit'>Add client</button>
 </form>

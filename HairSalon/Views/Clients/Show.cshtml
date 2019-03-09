@@ -1,9 +1,29 @@
-<h1>Client Details: </h1>
+@using HairSalon.Models;
 
-<h2>@Model["clients"].GetName()</h2>
-<h3>Stylist: @Model["stylists"].GetName()</h3>
+<h1>Hair salon</h1>
+<h2>Client: @Model["selectedClient"].GetName()</h2>
+<hr />
 
-<a href='/stylists/@Model["stylists"].GetId()/clients/new'>Add another client</a>
-<a href='/stylists'>View all categories</a>
+@if (@Model["clientStylists"].Count != 0)
+{
+    <h4>This client has these stylists:</h4>
+    <ul>
+        @foreach (Stylist stylist in @Model["clientStylists"])
+        {
+            <li>@stylist.GetName()</li>
+        }
+    </ul>
 
-<!-- <a href='/stylists/@Model["stylists"].GetId()/clients/@Model["clients"].GetId()/edit'>@Model["clients"].GetName()</a> -->
+    <h4>Add a stylist to this client:</h4>
+
+    <form action='/clients/@Model["selectedClient"].GetId()/stylists/new' method='post'>
+        <label for='stylistId'>Select a category</label>
+        <select id='stylistId' name='stylistId' type='text'>
+            @foreach (var stylistId in @Model["allStylists"])
+            {
+                <option value='@stylistId.GetId()'>@stylistId.GetName()</option>
+            }
+        </select>
+        <button type='submit'></button>
+    </form>
+}

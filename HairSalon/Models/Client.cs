@@ -263,6 +263,46 @@ namespace HairSalon.Models
             return stylists;
         }
 
+        public void AddStylist(Stylist stylist) //test
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"INSERT INTO stylists_clients (client_id, stylist_id) VALUES (@ClientId, @StylistId);";
+            MySqlParameter stylist_id = new MySqlParameter();
+            stylist_id.ParameterName = "@StylistId";
+            stylist_id.Value = stylist.GetId();
+            cmd.Parameters.Add(stylist_id);
+            MySqlParameter client_id = new MySqlParameter();
+            client_id.ParameterName = "@ClientId";
+            client_id.Value = _id;
+            cmd.Parameters.Add(client_id);
+            cmd.ExecuteNonQuery();
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+        }
+
+        public void DeleteClient(int clientId) //test
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"DELETE FROM clients WHERE id = (@deleteId);";
+            MySqlParameter deleteId = new MySqlParameter();
+            deleteId.ParameterName = "@deleteId";
+            deleteId.Value = clientId;
+            cmd.Parameters.Add(deleteId);
+            cmd.ExecuteNonQuery();
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+        }
+
         public static void ClearJoinTable()
         {
             MySqlConnection conn = DB.Connection();
