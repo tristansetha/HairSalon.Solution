@@ -7,7 +7,7 @@ A website that lets users add stylists, specialties and clients into a database.
 
 ## Setup/Installation Requirements
 
-<br/>To Clone:
+### To Clone:
 <br/>Download .NET Core 1.1.4 SDK and .NET Core Runtime 1.1.2 and install them. Download Mono and install it.
 <br/>Open terminal and $ cd into preferred destination of clone
 <br/>Run the command:
@@ -18,17 +18,16 @@ $ git clone https://github.com/tristansetha/HairSalon.Solution
 ```
 $ cd HairSalon.Solution
 ```
-<br/>To edit: open entire dot solutions director in preffered text editor
+### To edit: 
+<br/>open entire dot solutions director in preffered text editor
 
-<br/>To Run:
-<br/>Download tristan_setha zip file
+### Setup:
 <br/>Download and install MAMP: //Link top mamp website download
 <br/>Open mamp and Start Servers
 <br/>Click on Open WebStart page
 <br/>Click on 'tools' at the top menu bar then click on PHPMYADMIN
-<br/>Click on databases, click on import, then select and import tristan_setha.zip
-<br/>In command prompt or terminal
-<br/>Navigate into HairSalon.Solution directory: 
+<br/>Click on databases, click on import, in the HairSalon.Solution's folder select and import tristan_setha.sql, then inport tristan_setha_test.sql.
+<br/>In command prompt or terminal, Navigate into HairSalon.Solution folder: 
 ```
 $ cd HairSalon.Solution
 ```
@@ -43,11 +42,8 @@ $ dotnet run
 ```
 <br/>Open the path from "Now listening on: http://localhost:5000 in your favorite web browser
 
-<br/>To run tests:
+### To run tests:
 <br/>Open mamp and Start Servers
-<br/>Click on Open WebStart page
-<br/>Click on 'tools' at the top menu bar then click on PHPMYADMIN
-<br/>Click on databases, click on import, then select and import tristan_setha_test.zip
 <br/>Navigate into HairSalon.Tests
 <br/>use the command:
 ```
@@ -63,11 +59,14 @@ $ dotnet test
 
 |   Behavior                          | Input Example | Output Example |
 | ------------------------------------|:-------------:| :-------------:|
-|  user clicks to Add new Stylist | click link  | stylist form |
-|  user enters stylist form with name and details  | Name: "Scott" Details: "Great stylist"  | list of stylists|
-|  user clicks on a stylist is sent to client form | click stylist link | list of clients, add new client link |
-|  user clicks to add new client, and is sent to client form | click add new client | client form |
-|  User enters enters in client name and submits   | client name: "Amy" |  redirected to client list and add new client link  |
+| User clicks 'View stylists, Add stylist or Add client' button | click button | redirects to stylists home page |
+| User clicks add new stylist | click button | add a stylist form |
+| User clicks 'clear all stylist' | click button | all stylists clear |
+| User adds a new stylist | Stylist 'name' and 'details' submit | Add a new client button appears |
+| User clicks on stylist | Click 'stylist' | stylist profile | 
+| User clicks edit stylist | Click edit button | Edit stylist form |
+| User adds a client to stylist | select client and add client | client appears in stylist profile|
+| User adds a specialty to stylist | select specialty and add specialty | specialty appears in stylist profile |
 
 
 ## Technologies Used
