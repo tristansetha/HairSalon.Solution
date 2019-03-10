@@ -75,8 +75,7 @@ namespace HairSalon.Controllers
         public ActionResult DeleteStylist(int stylistId)
         {
             Stylist stylist = Stylist.Find(stylistId);
-            // stylist.DeleteAllClients(stylistId);
-            stylist.Delete();
+            stylist.DeleteStylist(stylistId);
             List<Stylist> allStylists = Stylist.GetAll();
             return RedirectToAction("Index", allStylists);
         } //test

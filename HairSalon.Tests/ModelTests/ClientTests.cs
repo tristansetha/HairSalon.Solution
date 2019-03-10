@@ -114,5 +114,16 @@ namespace HairSalon.TestTools
             List<Stylist> results = newClient.GetStylists();
             CollectionAssert.AreEqual(test, results);
         }
+
+        [TestMethod]
+        public void DeleteClient_ReturnsEmptyList_List()
+        {
+            Client newClient = new Client("name", 0, "notes");
+            newClient.Save();
+            List<Client> test = new List<Client> {};
+            newClient.DeleteClient(newClient.GetId());
+            List<Client> result = Client.GetAll();
+            CollectionAssert.AreEqual(test, result);
+        }
     }
 }

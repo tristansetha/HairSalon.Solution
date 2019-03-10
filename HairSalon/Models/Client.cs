@@ -167,16 +167,16 @@ namespace HairSalon.Models
             return newClient;
         }
 
-        public void Delete(int id)
+        public void DeleteClient(int id) //test
         {
             MySqlConnection conn = DB.Connection();
             conn.Open();
             var cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"DELETE FROM clients WHERE id = @searchId;";
-            MySqlParameter searchId = new MySqlParameter();
-            searchId.ParameterName = "@searchId";
-            searchId.Value = id;
-            cmd.Parameters.Add(searchId);
+            cmd.CommandText = @"DELETE FROM clients WHERE id = @ClientId; DELETE FROM stylists_clients WHERE client_id = @ClientId;";
+            MySqlParameter ClientId = new MySqlParameter();
+            ClientId.ParameterName = "@ClientId";
+            ClientId.Value = id;
+            cmd.Parameters.Add(ClientId);
             cmd.ExecuteNonQuery();
             conn.Close();
             if (conn != null)
@@ -277,24 +277,6 @@ namespace HairSalon.Models
             client_id.ParameterName = "@ClientId";
             client_id.Value = _id;
             cmd.Parameters.Add(client_id);
-            cmd.ExecuteNonQuery();
-            conn.Close();
-            if (conn != null)
-            {
-                conn.Dispose();
-            }
-        }
-
-        public void DeleteClient(int clientId) //test
-        {
-            MySqlConnection conn = DB.Connection();
-            conn.Open();
-            var cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"DELETE FROM clients WHERE id = (@deleteId);";
-            MySqlParameter deleteId = new MySqlParameter();
-            deleteId.ParameterName = "@deleteId";
-            deleteId.Value = clientId;
-            cmd.Parameters.Add(deleteId);
             cmd.ExecuteNonQuery();
             conn.Close();
             if (conn != null)

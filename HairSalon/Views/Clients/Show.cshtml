@@ -13,17 +13,21 @@
             <li>@stylist.GetName()</li>
         }
     </ul>
-
-    <h4>Add a stylist to this client:</h4>
-
-    <form action='/clients/@Model["selectedClient"].GetId()/stylists/new' method='post'>
-        <label for='stylistId'>Select a category</label>
-        <select id='stylistId' name='stylistId' type='text'>
-            @foreach (var stylistId in @Model["allStylists"])
-            {
-                <option value='@stylistId.GetId()'>@stylistId.GetName()</option>
-            }
-        </select>
-        <button type='submit'></button>
-    </form>
 }
+
+<h4>Add a stylist to this client:</h4>
+
+<form action='/clients/@Model["selectedClient"].GetId()/stylists/new' method='post'>
+    <label for='stylistId'>Select a category</label>
+    <select id='stylistId' name='stylistId' type='text'>
+        @foreach (var stylistId in @Model["allStylists"])
+        {
+            <option value='@stylistId.GetId()'>@stylistId.GetName()</option>
+        }
+    </select>
+    <br/><button type='submit'>Add</button>
+</form>
+
+<form action='/clients/@Model["selectedClient"].GetId()/delete' method='post'>
+    <button id='@Model["selectedClient"].GetId()' name='@Model["selectedClient"].GetId()' type='submit'>Delete @Model["selectedClient"].GetName() </button>
+</form>

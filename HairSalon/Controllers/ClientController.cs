@@ -42,14 +42,16 @@ namespace HairSalon.Controllers
             return View(model);
         }
 
-        [HttpGet("/stylists/{stylistId}/clients/new")]
-        public ActionResult New(int categoryId)
+        [HttpPost("/clients/{id}/delete")] 
+        public ActionResult DeleteClient(int id)
         {
-        Stylist category = Stylist.Find(categoryId);
-        return View(category);
+            Client selectedClient = Client.Find(id);
+            selectedClient.DeleteClient(id);
+            List<Client> allClients = Client.GetAll();
+            return RedirectToAction("Index", allClients);
         }
 
-        [HttpPost("/clients/{clientId}/stylists/new")]
+        [HttpPost("/clients/{clientId}/stylists/new")] //select option drop down
         public ActionResult AddStylist(int clientId, int stylistId)
         {
             Client client = Client.Find(clientId);

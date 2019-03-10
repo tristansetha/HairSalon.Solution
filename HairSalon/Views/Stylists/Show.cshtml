@@ -50,9 +50,12 @@
 <br/><button type='submit'>Add</button>
 </form>
 
+<form action='/stylists/@Model["stylist"].GetId()/delete' method='post'>
+    <button id='@Model["stylist"].GetId()' name='@Model["stylist"].GetId()' type='submit'>Delete @Model["stylist"].GetName() </button>
+</form>
 
 
-<h3><a href="/clients/new">Add a new client</a></h3>
-<h3><a href='/specialties/new'>Add a specialty</a></h3>
+<p><a href='/clients/new'>Add a new client</a></p>
+<p><a href='/specialties/new'>Add a specialty</a></p>
 
 <br/><p><a href="/">Return to Main Page</a></p>

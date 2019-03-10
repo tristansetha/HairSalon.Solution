@@ -77,5 +77,16 @@ namespace HairSalon.TestTools
             Specialty foundSpecialty = Specialty.Find(newSpecialty.GetId());
             Assert.AreEqual(newSpecialty, foundSpecialty);
         }
+
+        [TestMethod]
+        public void DeleteSpecialty_ReturnsEmptyList_List()
+        {
+            Specialty newSpecialty = new Specialty("description");
+            newSpecialty.Save();
+            newSpecialty.DeleteSpecialty(newSpecialty.GetId());
+            List<Specialty> test = new List<Specialty> {};
+            List<Specialty> result = Specialty.GetAll();
+            CollectionAssert.AreEqual(test, result);
+        }
     }
 }

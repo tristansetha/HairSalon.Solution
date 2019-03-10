@@ -211,6 +211,24 @@ namespace HairSalon.Models
             return newSpecialty;
         }
 
+        public void DeleteSpecialty(int id) //test
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"DELETE FROM specialties WHERE id = @SpecialtyId; DELETE FROM stylists_specialties WHERE specialty_id = @SpecialtyId;";
+            MySqlParameter SpecialtyId = new MySqlParameter();
+            SpecialtyId.ParameterName = "@SpecialtyId";
+            SpecialtyId.Value = id;
+            cmd.Parameters.Add(SpecialtyId);
+            cmd.ExecuteNonQuery();
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+        }
+
         
     }
 }
