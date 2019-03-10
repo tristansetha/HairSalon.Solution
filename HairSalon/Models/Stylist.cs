@@ -61,6 +61,11 @@ namespace HairSalon.Models
             return _stylistDetails;
         }
 
+        public void SetName(string newName)
+        {
+            _stylistName = newName;
+        }
+
         public void AddClient(Client client)
         {
             MySqlConnection conn = DB.Connection();
@@ -157,7 +162,7 @@ namespace HairSalon.Models
         //     MySqlConnection conn = DB.Connection();
         //     conn.Open();
         //     var cmd = conn.CreateCommand() as MySqlCommand;
-        //     cmd.CommandText = @"DELETE FROM clients WHERE stylist_id = @stylist_id:";
+        //     cmd.CommandText = @"DELETE FROM clients WHERE stylist_id = @stylist_id;";
         //     MySqlParameter stylistId = new MySqlParameter();
         //     stylistId.ParameterName = "@stylist_id";
         //     stylistId.Value = id;
@@ -307,6 +312,34 @@ namespace HairSalon.Models
             StylistId.Value = id;
             cmd.Parameters.Add(StylistId);
             cmd.ExecuteNonQuery();
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+        }
+
+        public void Edit(string newName, string newDetails)
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"UPDATE stylists SET name = @newName WHERE id = @searchId; UPDATE stylists SET details = @newDetails WHERE id = @searchId;";
+            MySqlParameter searchId = new MySqlParameter();
+            searchId.ParameterName = "@searchId";
+            searchId.Value = this._id;
+            cmd.Parameters.Add(searchId);
+            MySqlParameter name = new MySqlParameter();
+            name.ParameterName = "@newName";
+            name.Value = newName;
+            cmd.Parameters.Add(name);
+            MySqlParameter details = new MySqlParameter();
+            details.ParameterName = "@newDetails";
+            details.Value = newDetails;
+            cmd.Parameters.Add(details);
+            cmd.ExecuteNonQuery();
+            _stylistName = newName; 
+            _stylistDetails = newDetails;
             conn.Close();
             if (conn != null)
             {

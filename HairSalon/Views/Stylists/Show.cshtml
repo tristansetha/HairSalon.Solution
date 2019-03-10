@@ -2,6 +2,7 @@
 
 <h1>Hair Salon</h1>
 <h2>Stylists: @Model["stylist"].GetName()</h2>
+<h3>Details: @Model["stylist"].GetDetails()</h3>
 <hr />
 
 @if (@Model["stylistClients"].Count != 0)
@@ -50,9 +51,12 @@
 <br/><button type='submit'>Add</button>
 </form>
 
-<form action='/stylists/@Model["stylist"].GetId()/delete' method='post'>
+<br/><form action='/stylists/@Model["stylist"].GetId()/delete' method='post'>
     <button id='@Model["stylist"].GetId()' name='@Model["stylist"].GetId()' type='submit'>Delete @Model["stylist"].GetName() </button>
-</form>
+<br/></form>
+
+
+<p><br/><a href='/stylists/@Model["stylist"].GetId()/edit'>edit @Model["stylist"].GetName()</a></p>
 
 
 <p><a href='/clients/new'>Add a new client</a></p>

@@ -1,8 +1,10 @@
 @using HairSalon.Models;
 
 <h1>Hair salon</h1>
-<h2>Client: @Model["selectedClient"].GetName()</h2>
-<hr />
+<h2>Client information: </h2>
+<h3>Client: @Model["selectedClient"].GetName()</h2>
+<h3>Client phone number: @Model["selectedClient"].GetPhoneNumber()</h3>
+<h3>Client notes: @Model["selectedClient"].GetNotes()</h3>
 
 @if (@Model["clientStylists"].Count != 0)
 {
@@ -18,7 +20,7 @@
 <h4>Add a stylist to this client:</h4>
 
 <form action='/clients/@Model["selectedClient"].GetId()/stylists/new' method='post'>
-    <label for='stylistId'>Select a category</label>
+    <label for='stylistId'>Select a stylist</label>
     <select id='stylistId' name='stylistId' type='text'>
         @foreach (var stylistId in @Model["allStylists"])
         {
@@ -31,3 +33,8 @@
 <form action='/clients/@Model["selectedClient"].GetId()/delete' method='post'>
     <button id='@Model["selectedClient"].GetId()' name='@Model["selectedClient"].GetId()' type='submit'>Delete @Model["selectedClient"].GetName() </button>
 </form>
+
+<p><br/><a href='/clients/@Model["selectedClient"].GetId()/edit'>edit @Model["selectedClient"].GetName()</a></p>
+
+<p><a href='/stylists/new'>Add a new stylist</a></p>
+<br/><p><a href="/">Return to Main Page</a></p>

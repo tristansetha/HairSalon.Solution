@@ -80,7 +80,34 @@ namespace HairSalon.Controllers
             return RedirectToAction("Index", allStylists);
         } //test
 
-        [HttpPost("/stylists/{stylistId}/clients/{clientId}/delete")]
+        [HttpGet("/stylists/{stylistId}/edit")]
+        public ActionResult Edit(int stylistId)
+        {
+            Dictionary<string, object> model = new Dictionary<string, object>();
+            Stylist stylist = Stylist.Find(stylistId);
+            model.Add("stylist", stylist);
+            return View(model);
+        } //test
+
+        [HttpPost("/stylists/{stylistId}")]
+        public ActionResult Update(int stylistId, string newName, string newDetails)
+        {
+            Dictionary<string, object> model = new Dictionary<string, object>();
+            Stylist selectedStylist = Stylist.Find(stylistId);
+            selectedStylist.Edit(newName, newDetails);
+            List<Client> stylistClients = selectedStylist.GetClients();
+            List<Client> allClients = Client.GetAll();
+            List<Specialty> stylistSpecialties = selectedStylist.GetSpecialties();
+            List<Specialty> allSpecialties = Specialty.GetAll();
+            model.Add("stylist", selectedStylist);
+            model.Add("stylistClients", stylistClients);
+            model.Add("stylistSpecialties", stylistSpecialties);
+            model.Add("allSpecialties", allSpecialties);
+            model.Add("allClients", allClients);
+            return View("Show", model);
+        }
+
+        [HttpPost("/stylists/{stylistId}/clients/{clientId}/delete")] //?
         public ActionResult DeleteClient(int clientId)
         {
             Client client = Client.Find(clientId);

@@ -118,8 +118,17 @@ namespace HairSalon.TestTools
             List<Specialty> test = newStylist.GetSpecialties();
             CollectionAssert.AreEqual(test, result);
         }
-        
 
+        [TestMethod]
+        public void Edit_ReturnsCorrectEdit_String()
+        {
+            Stylist testStylist = new Stylist("newName", "newDetails");
+            Stylist result = new Stylist("name", "details");
+            result.Save();
+            result.Edit("newName", "newDetails");
+            testStylist.Save();
+            Assert.AreEqual(testStylist.GetName(), result.GetName());
+        }
         // [TestMethod]
         // public void AddClient_AssociatesClientWithStylist_ClientList()
         // {

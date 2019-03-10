@@ -1,0 +1,12 @@
+<h1>Edit</h1>
+<h2>Stylist: @Model["client"].GetName()</h2>
+
+<form action='/clients/@Model["client"].GetId()' method='post'>
+    <label for='newName'>Client name: </label>
+    <input id='newName' name='newName' type='text' required>
+    <label for='newPhoneNumber'>Client phone numer: </label>
+    <input id='newPhoneNumber' name='newPhoneNumber' type='text' required>
+    <label for='newNotes'>Client notes: </label>
+    <input id='newNotes' name='newNotes' type='text' required>
+    <button type='submit'>submit</button>
+</form>
