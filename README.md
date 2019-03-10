@@ -22,8 +22,9 @@ $ cd HairSalon.Solution
 <br/>open entire dot solutions director in preffered text editor
 
 ### Setup:
-<br/>Download and install MAMP: //Link top mamp website download
-<br/>Open mamp and Start Servers
+<br/>Download and install MAMP: https://www.mamp.info/en/downloads
+<br/>Open mamp, click preferences, select ports tab, Set the Apache Port to 8888, the MySQL Port to 8889, then click OK.
+<br/>Start servers
 <br/>Click on Open WebStart page
 <br/>Click on 'tools' at the top menu bar then click on PHPMYADMIN
 <br/>Click on databases, click on import, in the HairSalon.Solution's folder select and import tristan_setha.sql, then inport tristan_setha_test.sql.
