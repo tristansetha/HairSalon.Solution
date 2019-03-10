@@ -46,15 +46,6 @@ namespace HairSalon.TestTools
             Assert.AreEqual("Tim", result);
         }
 
-        // [TestMethod]
-        // public void GetStylistId_ReturnsCorrectStylistId_Int()
-        // {
-        //     Client newClient = new Client("Bob",  0, "notes");
-        //     newClient.Save();
-        //     int Id = newClient.GetStylistId();
-        //     Assert.AreEqual(0, Id);
-        // }
-
         [TestMethod]
         public void Equals_ReturnsTrueIfNamesAreTheSame_Client()
         {
@@ -123,6 +114,19 @@ namespace HairSalon.TestTools
             List<Client> test = new List<Client> {};
             newClient.DeleteClient(newClient.GetId());
             List<Client> result = Client.GetAll();
+            CollectionAssert.AreEqual(test, result);
+        }
+
+        [TestMethod]
+        public void AddStylist_ReturnsCorrectStylist_Stylist()
+        {
+            Client newClient = new Client("name", 0, "notes");
+            newClient.Save();
+            Stylist newStylist = new Stylist("name", "details");
+            newStylist.Save();
+            newClient.AddStylist(newStylist);
+            List<Stylist> result = newClient.GetStylists();
+            List<Stylist> test = new List<Stylist> {newStylist};
             CollectionAssert.AreEqual(test, result);
         }
     }

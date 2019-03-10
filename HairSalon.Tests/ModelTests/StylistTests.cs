@@ -79,7 +79,10 @@ namespace HairSalon.TestTools
         {
             Stylist newStylist = new Stylist("Amy", "Amy likes pears");
             newStylist.Save();
-            List<Client> newClientList = new List<Client> {};
+            Client newClient = new Client("name", 0, "notes");
+            newClient.Save();
+            newStylist.AddClient(newClient);
+            List<Client> newClientList = new List<Client> {newClient};
             List<Client> result = newStylist.GetClients();
             CollectionAssert.AreEqual(newClientList, result);
         }
@@ -129,20 +132,18 @@ namespace HairSalon.TestTools
             testStylist.Save();
             Assert.AreEqual(testStylist.GetName(), result.GetName());
         }
-        // [TestMethod]
-        // public void AddClient_AssociatesClientWithStylist_ClientList()
-        // {
-        // //Arrange
-        // Client newClient = new Client("name", 1);
-        // newClient.Save();
-        // List<Client> newList = new List<Client> { newClient };
-        // Stylist newStylist = new Stylist("Amy", "Amy likes pears");
-        // newClient.Save();
-        // newStylist.AddClient(newClient);
-        // //Act
-        // List<Client> result = newStylist.GetClients();
-        // //Assert
-        // CollectionAssert.AreEqual(newList, result);
-        // }
+        [TestMethod]
+        public void AddClient_AssociatesClientWithStylist_ClientList()
+        {
+            Client newClient = new Client("name", 1, "notes");
+            newClient.Save();
+            List<Client> test = new List<Client> { newClient };
+            Stylist newStylist = new Stylist("name", "details");
+            newStylist.Save();
+            newStylist.AddClient(newClient);
+            List<Client> result = newStylist.GetClients();
+            CollectionAssert.AreEqual(test, result);
+        }
+
     }
 }
