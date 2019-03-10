@@ -3,6 +3,7 @@
 By Tristan Setha 03/01/19
 
 ## Description
+A website that lets users add stylists, specialties and clients into a database. Users can edit, delete, and organize data within the the website.
 
 ## Setup/Installation Requirements
 
