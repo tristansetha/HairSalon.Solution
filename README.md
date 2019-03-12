@@ -11,7 +11,7 @@ A website that lets users add stylists, specialties and clients into a database.
 <br/>Download .NET Core 1.1.4 SDK and .NET Core Runtime 1.1.2 and install them. Download Mono and install it.
 <br/>Open terminal and $ cd into preferred destination of clone
 <br/>Run the command:
-```
+```;'
 $ git clone https://github.com/tristansetha/HairSalon.Solution
 ```
 <br/>Navigate into the HairSalon directory
@@ -55,6 +55,28 @@ $ dotnet restore
 $ dotnet test
 ```
 
+### Creating tables manually in MySql:
+```
+CREATE TABLE `tristan_setha`.`clients` ( `id` INT NOT NULL AUTO_INCREMENT , `name` VARCHAR(255) NOT NULL , `phone_number` INT NOT NULL , `notes` VARCHAR(255) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+```
+
+```
+CREATE TABLE `tristan_setha`.`stylists` ( `id` INT NOT NULL AUTO_INCREMENT , `name` VARCHAR(255) NOT NULL , `details` VARCHAR(255) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+```
+
+```
+CREATE TABLE `tristan_setha`.`specialties` ( `id` INT NOT NULL AUTO_INCREMENT , `description` VARCHAR(255) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+```
+
+```
+CREATE TABLE `tristan_setha`.`stylists_clients` ( `id` INT NOT NULL AUTO_INCREMENT , `client_id` INT NOT NULL , `stylist_id` INT NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+```
+
+```
+CREATE TABLE `tristan_setha`.`stylists_specialties` ( `id` INT NOT NULL AUTO_INCREMENT , `specialty_id` INT NOT NULL , `stylist_id` INT NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+```
+
+<br/>For test database repeat for tristan_setha_test
 
 ## Specs
 
