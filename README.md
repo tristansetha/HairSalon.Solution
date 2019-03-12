@@ -57,6 +57,10 @@ $ dotnet test
 
 ### Creating tables manually in MySql:
 ```
+CREATE DATABASE tristan_setha;
+```
+
+```
 CREATE TABLE `tristan_setha`.`clients` ( `id` INT NOT NULL AUTO_INCREMENT , `name` VARCHAR(255) NOT NULL , `phone_number` INT NOT NULL , `notes` VARCHAR(255) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 ```
 
