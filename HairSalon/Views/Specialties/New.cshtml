@@ -1,11 +1,15 @@
-<h1>Add a specialty</h1>
-<p>Add a specialty here:</p>
+@{
+  Layout = "_Layout";
+}
 
-<form action="/specialties" method="post">
+  <h1>Add a specialty</h1>
+  <p>Add a specialty here:</p>
+
+  <form action="/specialties" method="post">
     <label for="specialtyDescription">Specialty: </label>
     <input id="specialtyDescription" name="specialtyDescription" type="text" required>
     <button type="submit">Add</button>
-</form>
+  </form>
 
-<p><a href="/">Back home</a></p>
-<p><a href="/stylists">Back to stylists.</a></p>
+  <p><a href="/">Back home</a></p>
+  <p><a href="/stylists">Back to stylists.</a></p>

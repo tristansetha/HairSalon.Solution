@@ -1,11 +1,14 @@
 @using HairSalon.Models;
 
-<h1>Hair salon</h1>
-<h2>Specialty: @Model["selectedSpecialty"].GetDescription()</h2>
-<hr/>
+@{
+  Layout = "_Layout";
+}
+  <h1>Hair salon</h1>
+  <h2>Specialty: @Model["selectedSpecialty"].GetDescription()</h2>
+  <hr/>
 
-@if (@Model["specailtiesStylists"].Count != 0)
-{
+  @if (@Model["specailtiesStylists"].Count != 0)
+  {
     <h4>These stylists have this specialty:</h4>
     <ul>
         @foreach (Stylist stylist in @Model["specailtiesStylists"])
@@ -13,10 +16,10 @@
             <li>@stylist.GetName()</li>
         }
     </ul>
-}
+  }
 
-<h4>Add a stylist to this specialty:</h4>
-<form action='/specialties/@Model["selectedSpecialty"].GetId()/stylists/new' method='post'>
+  <h4>Add a stylist to this specialty:</h4>
+  <form action='/specialties/@Model["selectedSpecialty"].GetId()/stylists/new' method='post'>
     <label for='stylistId'>Select a stylist</label>
     <select id='stylistId' name='stylistId' type='text'>
         @foreach (var stylistId in @Model["allStylists"])
@@ -25,9 +28,8 @@
         }
     </select>
     <button type='submit'>Add</button>
-</form>
+  </form>
 
-<form action='/specialties/@Model["selectedSpecialty"].GetId()/delete' method='post'>
+  <form action='/specialties/@Model["selectedSpecialty"].GetId()/delete' method='post'>
     <button id='@Model["selectedSpecialty"].GetId()' name='@Model["selectedSpecialty"].GetId()' type='submit'>Delete @Model["selectedSpecialty"].GetDescription() </button>
-</form>
-
+  </form>

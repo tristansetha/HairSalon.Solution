@@ -11,7 +11,7 @@ A website that lets users add stylists, specialties and clients into a database.
 <br/>Download .NET Core 1.1.4 SDK and .NET Core Runtime 1.1.2 and install them. Download Mono and install it.
 <br/>Open terminal and $ cd into preferred destination of clone
 <br/>Run the command:
-```;'
+```
 $ git clone https://github.com/tristansetha/HairSalon.Solution
 ```
 <br/>Navigate into the HairSalon directory
